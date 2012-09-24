@@ -13,8 +13,8 @@ object Main {
   }
 
   def pascal(c: Int, r: Int): Int = {
-    def factorial(n: Int) = (2 to n).foldLeft(1)(_*_) 
-    factorial(r)/(factorial(r-c)*factorial(c))
+    def factorial(x: Int, accumulator: Int): Int = if (x == 0) accumulator else factorial(x-1, x*accumulator)
+    factorial(r, 1)/(factorial(r-c, 1)*factorial(c, 1))
   }
 
   def balance(chars: List[Char]): Boolean = {
